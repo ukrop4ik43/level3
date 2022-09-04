@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark_blue"
+    android:layout_height="match_parent"
+    tools:context=".itemDetailFragment">
+
+
+    <ImageButton
+        android:id="@+id/arrowBackButton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginVertical="@dimen/large"
+        android:layout_marginStart="@dimen/large"
+        android:backgroundTint="@color/dark_blue"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back" />
+    <View
+        android:id="@+id/ViewBottomContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="309dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="0.5" />
+
+    <TextView
+        android:id="@+id/ProfileTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium"
+        android:text="@string/profile"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/AvatarImageView"
+        android:layout_width="@dimen/detail_view_image"
+        android:layout_height="@dimen/detail_view_image"
+        android:layout_marginBottom="@dimen/detail_view_image"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/ViewBottomContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/nil" />
+
+    <TextView
+        android:id="@+id/UserNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium"
+        android:fontFamily="@font/font_custom"
+        android:gravity="center"
+        android:text="@string/user_name"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/AvatarImageView"
+        app:layout_constraintStart_toStartOf="@+id/AvatarImageView"
+        app:layout_constraintTop_toBottomOf="@+id/AvatarImageView" />
+
+    <TextView
+        android:id="@+id/CareerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_custom"
+        android:gravity="center"
+        android:text="@string/occupy"
+        android:textColor="@color/light_grey"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/UserNameTextView"
+        app:layout_constraintStart_toStartOf="@+id/UserNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/UserNameTextView" />
+
+    <TextView
+        android:id="@+id/HomeAddressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large"
+        android:fontFamily="@font/font_custom"
+        android:gravity="center"
+        android:text="@string/address"
+        android:textColor="@color/light_grey"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/CareerTextView"
+        app:layout_constraintStart_toStartOf="@+id/CareerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/UserNameTextView" />
+
+    <ImageView
+        android:id="@+id/FacebookImageView"
+        android:layout_width="@dimen/social_messengers_size"
+        android:layout_height="@dimen/social_messengers_size"
+        android:layout_marginStart="@dimen/social_messengers_size"
+        android:layout_marginEnd="@dimen/large"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toStartOf="@+id/LinkedInImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/LinkedInImageView"
+        app:srcCompat="@drawable/fac" />
+
+    <ImageView
+        android:id="@+id/VKImageView"
+        android:layout_width="@dimen/social_messengers_size"
+        android:layout_height="@dimen/social_messengers_size"
+        android:layout_marginStart="@dimen/large"
+        android:layout_marginEnd="@dimen/social_messengers_size"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LinkedInImageView"
+        app:layout_constraintTop_toTopOf="@+id/LinkedInImageView"
+        app:srcCompat="@drawable/images" />
+
+    <ImageView
+        android:id="@+id/LinkedInImageView"
+        android:layout_width="@dimen/social_messengers_size"
+        android:layout_height="@dimen/social_messengers_size"
+        android:layout_marginTop="@dimen/social_messengers_size"
+        android:contentDescription="@string/todo"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ViewBottomContainer"
+        app:srcCompat="@drawable/in" />
+
+    <Button
+        android:id="@+id/ViewMyContactsButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginStart="@dimen/medium"
+        android:layout_marginEnd="@dimen/medium"
+        android:layout_marginBottom="@dimen/medium"
+        android:backgroundTint="@color/orange"
+        android:text="@string/message"
+        app:cornerRadius="@dimen/mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

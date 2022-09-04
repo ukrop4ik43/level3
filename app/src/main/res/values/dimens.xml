@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="micro">4dp</dimen>
+    <dimen name="mini">8dp</dimen>
+    <dimen name="small">12dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="large">24dp</dimen>
+    <dimen name="largest">36dp</dimen>
+    <dimen name="button_size">50dp</dimen>
+    <dimen name="social_messengers_size">60dp</dimen>
+    <dimen name="recyclerview_image_size">40dp</dimen>
+    <dimen name="detail_view_image">120dp</dimen>
+
+</resources>

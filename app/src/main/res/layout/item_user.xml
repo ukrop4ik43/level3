@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/mini"
+    android:layout_marginVertical="@dimen/micro"
+    android:background="@drawable/border">
+
+
+    <ImageView
+        android:id="@+id/avatarIV"
+        android:layout_width="@dimen/recyclerview_image_size"
+        android:layout_height="@dimen/recyclerview_image_size"
+        android:layout_marginVertical="@dimen/mini"
+        android:layout_marginStart="@dimen/medium"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/me" />
+
+
+    <TextView
+        android:id="@+id/nameSurnameTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/medium"
+        android:ellipsize="end"
+        android:lines="1"
+        android:layout_marginTop="@dimen/mini"
+        tools:text="Name Surname"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/careerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/medium"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/light_grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintTop_toBottomOf="@+id/nameSurnameTV"
+        tools:text="career" />
+
+
+    <ImageButton
+        android:id="@+id/trashBinIB"
+        android:layout_width="@dimen/recyclerview_image_size"
+        android:layout_height="@dimen/recyclerview_image_size"
+        android:layout_marginEnd="@dimen/medium"
+        android:layout_marginVertical="@dimen/mini"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/trashbin" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
