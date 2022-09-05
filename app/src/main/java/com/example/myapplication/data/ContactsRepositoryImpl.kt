@@ -1,12 +1,10 @@
-package com.example.myapplication.model
+package com.example.myapplication.data
 
+import com.example.myapplication.domain.ContactsRepository
+import com.example.myapplication.ui.model.User
 
-typealias usersListener = (users: List<User>) -> Unit
-
-class UsersService {
+class ContactsRepositoryImpl : ContactsRepository {
     private var users = mutableListOf<User>()
-
-    private val listeners = mutableSetOf<usersListener>()
 
     init {
         users.add(
@@ -53,40 +51,26 @@ class UsersService {
 
     }
 
-    fun getSize():Int{
+    override fun getSize():Int{
         return users.size
     }
 
-    fun getUsers(): List<User> {
+    override fun getUsers(): List<User> {
         return users
     }
 
 
-    fun addUser(name: String, occupy: String, photo: String,address:String) {
+    override fun addUser(name: String, occupy: String, photo: String,address:String) {
         users.add(users.size, User(users.size.toLong(), photo, name, occupy,address))
 
     }
 
-    fun deleteUser(user: User) {
-        val indexToDelete = users.indexOfFirst { it.id == user.id }
-        if (indexToDelete != -1) {
-            users.removeAt(indexToDelete)
-            notifyChanges()
-        }
-    }
-
-    fun addListener(listener: usersListener) {
-        listeners.add(listener)
-        listener.invoke(users)
-    }
-
-    fun deleteListener(listener: usersListener) {
-        listeners.remove(listener)
-    }
-
-    private fun notifyChanges() {
-        listeners.forEach {
-            it.invoke(users)
-        }
+    override fun deleteUser(userPosition: Int) {
+        users.removeAt(userPosition)
+//        val indexToDelete = users.indexOfFirst { it.id == user.id }
+//        if (indexToDelete != -1) {
+//            users.removeAt(indexToDelete)
+////            notifyChanges()
+//        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.model
+package com.example.myapplication.ui.model
 
 data class User(
     var id: Long,

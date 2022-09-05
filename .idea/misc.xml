@@ -10,6 +10,9 @@
         <entry key="..\:/src/thirdLevelApp/app/src/main/res/layout/fragment_start.xml" value="0.22826086956521738" />
         <entry key="..\:/src/thirdLevelApp/app/src/main/res/layout/google_button_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/src/thirdLevelApp/app/src/main/res/layout/item_user.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24074074074074073" />
+        <entry key="app/src/main/res/layout/fragment_start.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_user.xml" value="0.35572916666666665" />
       </map>
     </option>
   </component>

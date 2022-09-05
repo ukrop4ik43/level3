@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".startFragment">
+        tools:context=".ui.StartFragment">
 
         <View
             android:id="@+id/UpperView"
@@ -77,12 +77,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/font_custom"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/UpperView"
-            tools:context=".RecyclerActivity" />
+            tools:context=".RecyclerActivity"
+            tools:listitem="@layout/item_user"
+            tools:itemCount="8"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
