@@ -67,10 +67,9 @@ class ContactsRepositoryImpl : ContactsRepository {
 
     override fun deleteUser(userPosition: Int) {
         users.removeAt(userPosition)
-//        val indexToDelete = users.indexOfFirst { it.id == user.id }
-//        if (indexToDelete != -1) {
-//            users.removeAt(indexToDelete)
-////            notifyChanges()
-//        }
+    }
+
+    override fun getUserName(userPosition: Int):String {
+       return users.get(userPosition).name
     }
 }

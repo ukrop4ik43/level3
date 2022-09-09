@@ -4,21 +4,30 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemUserBinding
+import com.example.myapplication.ui.itemDetailFragment
 import com.example.myapplication.ui.model.User
+import com.example.myapplication.ui.viewModel.SharedViewModel
+import java.util.*
 
 
 interface UserActionListener {
     fun onUserDelete(userPosition: Int)
+    fun getName()
+
 }
 
-class UsersAdapter(private val actionListener: UserActionListener) :
+class UsersAdapter(private val actionListener: UserActionListener,
+                   private val sharedViewModel: SharedViewModel) :
     ListAdapter<User, UsersAdapter.UsersViewHolder>(object : DiffUtil.ItemCallback<User>() {
+
+
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem.id == newItem.id
         }
@@ -28,39 +37,32 @@ class UsersAdapter(private val actionListener: UserActionListener) :
         }
     }) {
 
-//    private lateinit var mListener: onItemClickListener
-//
-//    interface onItemClickListener {
-//        fun onItemClick(position: Int)
-//    }
-
-//
-//    fun setOnItemClickListener(listener: onItemClickListener) {
-//        mListener = listener
-//    }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemUserBinding.inflate(inflater, parent, false)
-//        binding.trashBinIB.setOnClickListener(this)
         return UsersViewHolder(binding, actionListener)
     }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.bindTo(getItem(position))
+        holder.itemView.setOnClickListener { v ->
+            val activity = v!!.context as AppCompatActivity
+            val itemDetailFragment = itemDetailFragment()
+            sharedViewModel.saveUserName(actionListener.getUserName(absoluteAdapterPosition))
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.startFragment, itemDetailFragment).addToBackStack(null)
+                .commit()
+        }
     }
+
 
     class UsersViewHolder(
         private val binding: ItemUserBinding,
         private val userActionListener: UserActionListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
-
         fun bindTo(user: User) {
             with(binding) {
-//                itemView.tag = user
-//                trashBinIB.tag = user
                 nameSurnameTV.text = user.name
                 careerTV.text = user.occupy
                 if (user.photo.isNotBlank()) {
@@ -73,31 +75,14 @@ class UsersAdapter(private val actionListener: UserActionListener) :
         }
 
         private fun setListeners() {
-            binding.root.setOnClickListener {
-                userActionListener.onUserDelete(absoluteAdapterPosition)
-            }
             binding.trashBinIB.setOnClickListener {
-//                val user = v.tag as User
-//                val imageButton = ImageButton(v.context)
-//                imageButton.setOnClickListener {
-//                }
-//                val context = v.context
-//                when (v.id) {
-//                    R.id.trashBinIB -> {
-//                val indexToDelete = absoluteAdapterPosition
-                userActionListener.onUserDelete(absoluteAdapterPosition )
-
-//                notifyItemRemoved(indexToDelete)
+                userActionListener.onUserDelete(absoluteAdapterPosition)
                 Toast.makeText(it.context, "Deleted", Toast.LENGTH_LONG).show()
-//                    }
+
             }
         }
     }
 }
-
-
-
-
 
 private fun ImageView.addImage(user: User) {
     Glide.with(this.context)

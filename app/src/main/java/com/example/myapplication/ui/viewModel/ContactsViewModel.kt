@@ -36,6 +36,7 @@ class ContactsViewModel() : ViewModel() {
 
     fun addUser(name: String, occupy: String, photo: String, address: String) {
         contactsRepository.addUser(name, occupy, photo, address)
+        _contactsListLiveData.value = _contactsListLiveData.value
     }
 
     fun deleteUser(userPosition: Int) {

@@ -7,5 +7,6 @@ interface ContactsRepository {
     fun getUsers(): List<User>
     fun addUser(name: String, occupy: String, photo: String,address:String)
     fun deleteUser(userPosition: Int)
+    fun getUserName(userPosition: Int)
 
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/dark_blue"
     android:layout_height="match_parent"
+    android:background="@color/dark_blue"
     tools:context=".ui.itemDetailFragment">
 
 
@@ -19,14 +19,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow_back" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
     <View
         android:id="@+id/ViewBottomContainer"
         android:layout_width="wrap_content"
-        android:layout_height="309dp"
+        android:layout_height="0dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_weight="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineLeft" />
 
     <TextView
         android:id="@+id/ProfileTextView"
@@ -44,7 +53,7 @@
         android:id="@+id/AvatarImageView"
         android:layout_width="@dimen/detail_view_image"
         android:layout_height="@dimen/detail_view_image"
-        android:layout_marginBottom="@dimen/detail_view_image"
+        android:layout_marginBottom="140dp"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toTopOf="@+id/ViewBottomContainer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +129,7 @@
         android:id="@+id/LinkedInImageView"
         android:layout_width="@dimen/social_messengers_size"
         android:layout_height="@dimen/social_messengers_size"
-        android:layout_marginTop="@dimen/social_messengers_size"
+        android:layout_marginTop="136dp"
         android:contentDescription="@string/todo"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
