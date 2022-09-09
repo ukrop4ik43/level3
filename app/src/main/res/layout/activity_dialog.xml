@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/dark_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/arrowBackButton"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginVertical="@dimen/large"
+            android:layout_marginStart="@dimen/large"
+            android:backgroundTint="@color/dark_blue"
+            android:contentDescription="@string/todo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/textViewAddContacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large"
+            android:text="@string/add_contacts"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/AvatarImageViewInDialog"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/me" />
+
+        <ImageButton
+            android:id="@+id/addPhotoImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="@string/todo"
+            android:background="@drawable/roundbutton"
+            app:cornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/AvatarImageViewInDialog"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
+
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextPersonName" />
+
+        <EditText
+            android:id="@+id/editTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/occupyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/occupy"
+            app:layout_constraintBottom_toTopOf="@+id/editTextCareer"
+            app:layout_constraintStart_toStartOf="@+id/editTextCareer" />
+
+        <EditText
+            android:id="@+id/editTextCareer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPersonName" />
+
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/e_mail"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress3"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress3" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCareer" />
+
+
+        <TextView
+            android:id="@+id/textViewPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            app:layout_constraintBottom_toTopOf="@+id/phone"
+            app:layout_constraintStart_toStartOf="@+id/phone" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3" />
+
+        <TextView
+            android:id="@+id/textViewHomeAdress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPostalAddress"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPostalAddress" />
+
+        <EditText
+            android:id="@+id/editTextTextPostalAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_birth"
+            app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+            app:layout_constraintStart_toStartOf="@+id/editTextDate" />
+
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/largest"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large"
+            android:layout_marginTop="@dimen/large"
+            android:layout_marginBottom="@dimen/large"
+            android:backgroundTint="@color/orange"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
