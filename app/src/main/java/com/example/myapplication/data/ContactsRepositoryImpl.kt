@@ -51,7 +51,7 @@ class ContactsRepositoryImpl : ContactsRepository {
 
     }
 
-    override fun getSize():Int{
+    override fun getSize(): Int {
         return users.size
     }
 
@@ -60,8 +60,8 @@ class ContactsRepositoryImpl : ContactsRepository {
     }
 
 
-    override fun addUser(name: String, occupy: String, photo: String,address:String) {
-        users.add(users.size, User(users.size.toLong(), photo, name, occupy,address))
+    override fun addUser(name: String, occupy: String, photo: String, address: String) {
+        users.add(users.size, User(users.size.toLong(), photo, name, occupy, address))
 
     }
 
@@ -69,7 +69,19 @@ class ContactsRepositoryImpl : ContactsRepository {
         users.removeAt(userPosition)
     }
 
-    override fun getUserName(userPosition: Int):String {
-       return users.get(userPosition).name
+    override fun getUserName(userPosition: Int): String {
+        return users.get(userPosition).name
+    }
+
+    override fun getUserOccupy(userPosition: Int): String {
+        return users.get(userPosition).occupy
+    }
+
+    override fun getUserHomeAddress(userPosition: Int): String {
+        return users.get(userPosition).homeAddress
+    }
+
+    override fun getUserPhoto(userPosition: Int): String {
+        return users.get(userPosition).photo
     }
 }

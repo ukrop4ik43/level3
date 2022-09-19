@@ -7,20 +7,25 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.myapplication.ui.StartFragment"
+        android:name="com.example.myapplication.activity.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_startFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/itemDetailFragment"
-        android:name="com.example.myapplication.ui.itemDetailFragment"
+        android:name="com.example.myapplication.activity.ItemDetailFragment"
         android:label="fragment_item_detail"
         tools:layout="@layout/fragment_item_detail" >
         <action
             android:id="@+id/action_itemDetailFragment_to_startFragment"
             app:destination="@id/startFragment" />
+        <argument
+            android:name="contact"
+            app:argType="com.example.myapplication.ui.model.User" />
     </fragment>
 </navigation>

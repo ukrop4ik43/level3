@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.activity
 
 import android.app.Dialog
 import android.os.Bundle
@@ -7,17 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.myapplication.R
+import com.example.myapplication.constants.Constants.imagesArray
 import com.example.myapplication.databinding.ActivityDialogBinding
 import com.example.myapplication.databinding.FragmentStartBinding
-import com.example.myapplication.ui.contactsList.UserActionListener
+import com.example.myapplication.ui.contactsList.OnContactClickListener
 import com.example.myapplication.ui.contactsList.UsersAdapter
+import com.example.myapplication.ui.model.User
 import com.example.myapplication.ui.viewModel.ContactsViewModel
-import com.example.myapplication.ui.viewModel.SharedViewModel
 
 
 /**
@@ -25,19 +25,14 @@ import com.example.myapplication.ui.viewModel.SharedViewModel
  * Use the [StartFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class StartFragment : Fragment() {
+class StartFragment : Fragment(), OnContactClickListener {
 
     private lateinit var chooseImage: String
     private lateinit var binding: FragmentStartBinding
-    private val sharedViewModel: SharedViewModel by activityViewModels()
-    private lateinit var dialogBinding:ActivityDialogBinding
+    private lateinit var dialogBinding: ActivityDialogBinding
 
     private val usersAdapter: UsersAdapter by lazy {
-        UsersAdapter(object : UserActionListener {
-            override fun onUserDelete(userPosition: Int) {
-                contactsViewModel.deleteUser(userPosition)
-            }
-        },sharedViewModel)
+        UsersAdapter(onContactClickListener = this)
     }
 
     private val contactsViewModel: ContactsViewModel by viewModels()
@@ -48,19 +43,30 @@ class StartFragment : Fragment() {
     ): View {
         binding = FragmentStartBinding.inflate(inflater, container, false)
 
+
         binding.recyclerView.run {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = usersAdapter
         }
 
-        binding.addContactB.setOnClickListener{
-            dialogCreater(inflater)
+        binding.btnAddContact.setOnClickListener {
+            dialogCreate(inflater)
         }
         return binding.root
     }
 
-    private fun dialogCreater(inflater: LayoutInflater) {
+    override fun onUserDelete(userPosition: Int) {
+        contactsViewModel.deleteUser(userPosition)
+    }
+
+    //navigateToDetails
+    override fun navigateToDetailFragment(user: User) {
+        val action = StartFragmentDirections.actionStartFragmentToItemDetailFragment(user)
+        findNavController().navigate(action)
+    }
+
+    private fun dialogCreate(inflater: LayoutInflater) {
         val dialog = Dialog(inflater.context)
         dialogBinding = ActivityDialogBinding.inflate(inflater)
         dialog.setCancelable(false)
@@ -70,22 +76,22 @@ class StartFragment : Fragment() {
     }
 
     private fun setDialogListeners(dialog: Dialog) {
-        dialogBinding.arrowBackButton.setOnClickListener {
+        dialogBinding.btnArrowBack.setOnClickListener {
             dialog.dismiss()
         }
-        dialogBinding.saveButton.setOnClickListener {
+        dialogBinding.btnSave.setOnClickListener {
             saveButtonListener(dialog)
         }
-        dialogBinding.addPhotoImageButton.setOnClickListener {
-            generateRandomImage(dialogBinding.AvatarImageViewInDialog)
+        dialogBinding.ibAddPhoto.setOnClickListener {
+            generateRandomImage(dialogBinding.ivaAvatarInDialog)
         }
     }
 
     private fun saveButtonListener(dialog: Dialog) {
-        if (dialogBinding.editTextPersonName.text.toString() != "" &&
-            dialogBinding.editTextCareer.text.toString() != ""
-            && dialogBinding.editTextTextPostalAddress.text.toString() != ""
-            && ::chooseImage.isInitialized && chooseImage!=""
+        if (dialogBinding.etPersonName.text.toString() != "" &&
+            dialogBinding.etOccupy.text.toString() != ""
+            && dialogBinding.etAddress.text.toString() != ""
+            && ::chooseImage.isInitialized && chooseImage != ""
         ) {
             saveButtonAction(dialog)
         } else {
@@ -99,22 +105,16 @@ class StartFragment : Fragment() {
 
     private fun saveButtonAction(dialog: Dialog) {
         contactsViewModel.addUser(
-            dialogBinding.editTextPersonName.text.toString(),
-            dialogBinding.editTextCareer.text.toString(),
-            chooseImage,dialogBinding.editTextTextPostalAddress.text.toString()
+            dialogBinding.etPersonName.text.toString(),
+            dialogBinding.etOccupy.text.toString(),
+            chooseImage, dialogBinding.etAddress.text.toString()
         )
-        chooseImage=""
+        chooseImage = ""
         dialog.dismiss()
     }
+
     private fun generateRandomImage(imageView: ImageView) {
-        val images = arrayOf(
-            "https://maximum.fm/uploads/media_news/2020/05/5ec25857a251b581364253.png?w=1200&h=675&il&q=80&output=jpg",
-            "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ea7a3c32163929.567197ac70bda.png",
-            "https://img.freepik.com/premium-vector/smiling-girl-avatar_102172-32.jpg",
-            "https://img.freepik.com/premium-vector/the-face-of-a-cute-girl-avatar-of-a-young-girl-portrait-vector-flat-illustration_192760-82.jpg?w=2000",
-            "https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1"
-        )
-        chooseImage = images.random()
+        chooseImage = imagesArray.random()
         Glide.with(this).load(chooseImage).into(imageView)
     }
 
@@ -128,5 +128,4 @@ class StartFragment : Fragment() {
             usersAdapter.submitList(users.toMutableList())
         }
     }
-
 }

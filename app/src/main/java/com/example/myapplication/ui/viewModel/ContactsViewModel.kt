@@ -18,11 +18,7 @@ class ContactsViewModel() : ViewModel() {
 
     init {
         contactsRepository = ContactsRepositoryImpl()
-        val users =  getUsers()
-
-        Log.d(TAG, "users count is ${users.size}")
-        Log.d(TAG, "users are $users")
-
+        val users = getUsers()
         _contactsListLiveData.value = users
     }
 

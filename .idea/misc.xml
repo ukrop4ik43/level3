@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/activity_dialog.xml" value="0.1" />
-        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/drawable/my_drawable.xml" value="0.2415" />
+        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/activity_dialog.xml" value="0.24906367041198502" />
+        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/activity_third_level_start.xml" value="0.18432971014492755" />
-        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/fragment_item_detail.xml" value="0.264" />
+        <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/fragment_item_detail.xml" value="0.2" />
         <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/fragment_start.xml" value="0.15942028985507245" />
         <entry key="..\:/src/ThirdLevel_v2/app/src/main/res/layout/item_user.xml" value="0.15942028985507245" />
       </map>

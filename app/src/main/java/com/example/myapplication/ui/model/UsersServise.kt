@@ -53,7 +53,7 @@ class UsersService {
 
     }
 
-    fun getSize():Int{
+    fun getSize(): Int {
         return users.size
     }
 
@@ -62,12 +62,12 @@ class UsersService {
     }
 
 
-    fun addUser(name: String, occupy: String, photo: String,address:String) {
-        users.add(users.size, User(users.size.toLong(), photo, name, occupy,address))
+    fun addUser(name: String, occupy: String, photo: String, address: String) {
+        users.add(users.size, User(users.size.toLong(), photo, name, occupy, address))
 
     }
 
-    fun getUserName(user:User):String{
+    fun getUserName(user: User): String {
         val index = users.indexOfFirst { it.id == user.id }
         if (index != -1) {
             return users.get(index).name

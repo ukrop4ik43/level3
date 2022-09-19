@@ -17,7 +17,7 @@
 
 
     <ImageView
-        android:id="@+id/avatarIV"
+        android:id="@+id/ivAvatar"
         android:layout_width="@dimen/recyclerview_image_size"
         android:layout_height="@dimen/recyclerview_image_size"
         android:layout_marginVertical="@dimen/mini"
@@ -30,7 +30,7 @@
 
 
     <TextView
-        android:id="@+id/nameSurnameTV"
+        android:id="@+id/tvNameSurname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -41,11 +41,11 @@
         tools:text="Name Surname"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/avatarIV"
+        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/careerTV"
+        android:id="@+id/tvCareer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -54,13 +54,13 @@
         android:lines="1"
         android:textColor="@color/light_grey"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/avatarIV"
-        app:layout_constraintTop_toBottomOf="@+id/nameSurnameTV"
+        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameSurname"
         tools:text="career" />
 
 
     <ImageButton
-        android:id="@+id/trashBinIB"
+        android:id="@+id/ibTrashBin"
         android:layout_width="@dimen/recyclerview_image_size"
         android:layout_height="@dimen/recyclerview_image_size"
         android:layout_marginEnd="@dimen/medium"

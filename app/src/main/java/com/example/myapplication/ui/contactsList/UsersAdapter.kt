@@ -2,31 +2,26 @@ package com.example.myapplication.ui.contactsList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemUserBinding
-import com.example.myapplication.ui.itemDetailFragment
+import com.example.myapplication.extensions.addImage
 import com.example.myapplication.ui.model.User
-import com.example.myapplication.ui.viewModel.SharedViewModel
-import java.util.*
 
 
-interface UserActionListener {
+interface OnContactClickListener {
     fun onUserDelete(userPosition: Int)
-    fun getName()
+    fun navigateToDetailFragment(user: User)
 
 }
 
-class UsersAdapter(private val actionListener: UserActionListener,
-                   private val sharedViewModel: SharedViewModel) :
+class UsersAdapter(
+    private val onContactClickListener: OnContactClickListener
+) :
     ListAdapter<User, UsersAdapter.UsersViewHolder>(object : DiffUtil.ItemCallback<User>() {
-
 
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem.id == newItem.id
@@ -40,55 +35,46 @@ class UsersAdapter(private val actionListener: UserActionListener,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemUserBinding.inflate(inflater, parent, false)
-        return UsersViewHolder(binding, actionListener)
+        return UsersViewHolder(binding, onContactClickListener)
     }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.bindTo(getItem(position))
-        holder.itemView.setOnClickListener { v ->
-            val activity = v!!.context as AppCompatActivity
-            val itemDetailFragment = itemDetailFragment()
-            sharedViewModel.saveUserName(actionListener.getUserName(absoluteAdapterPosition))
-            activity.supportFragmentManager.beginTransaction()
-                .replace(R.id.startFragment, itemDetailFragment).addToBackStack(null)
-                .commit()
-        }
     }
 
 
-    class UsersViewHolder(
+    inner class UsersViewHolder(
         private val binding: ItemUserBinding,
-        private val userActionListener: UserActionListener
+        private val onContactClickListener: OnContactClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindTo(user: User) {
             with(binding) {
-                nameSurnameTV.text = user.name
-                careerTV.text = user.occupy
+                tvNameSurname.text = user.name
+                tvCareer.text = user.occupy
                 if (user.photo.isNotBlank()) {
-                    avatarIV.addImage(user)
+                    ivAvatar.addImage(user)
                 } else {
-                    avatarIV.setImageResource(R.drawable.me)
+                    ivAvatar.setImageResource(R.drawable.me)
                 }
             }
-            setListeners()
+            setListeners(user)
         }
 
-        private fun setListeners() {
-            binding.trashBinIB.setOnClickListener {
-                userActionListener.onUserDelete(absoluteAdapterPosition)
-                Toast.makeText(it.context, "Deleted", Toast.LENGTH_LONG).show()
+        private fun setListeners(user: User) {
+            with(binding) {
+                ibTrashBin.setOnClickListener {
+                    onContactClickListener.onUserDelete(absoluteAdapterPosition)
+                    Toast.makeText(it.context, "Deleted", Toast.LENGTH_LONG).show()
+                }
+                root.setOnClickListener {
+                    onContactClickListener.navigateToDetailFragment(user)
 
+                }
             }
         }
+
     }
 }
 
-private fun ImageView.addImage(user: User) {
-    Glide.with(this.context)
-        .load(user.photo)
-        .circleCrop()
-        .placeholder(R.drawable.me)
-        .error(R.drawable.me)
-        .into(this)
-}
+
