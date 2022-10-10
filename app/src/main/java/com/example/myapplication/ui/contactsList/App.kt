@@ -6,5 +6,4 @@ import com.example.myapplication.ui.model.UsersService
 
 class App : Application() {
     var UsersService = UsersService()
-
 }

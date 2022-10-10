@@ -12,7 +12,7 @@ import com.example.myapplication.R
 import com.example.myapplication.constants.Constants.TAG
 import com.example.myapplication.databinding.ActivityDialogBinding
 
-class ActivityDialog : DialogFragment() {
+class DialogFragment : DialogFragment() {
     private var _binding: ActivityDialogBinding? = null
 
     @SuppressLint("InflateParams", "UseGetLayoutInflater")

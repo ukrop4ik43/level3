@@ -1,9 +1,9 @@
 package com.example.myapplication.constants
 
-import com.example.myapplication.activity.ActivityDialog
+import com.example.myapplication.activity.DialogFragment
 
 object Constants {
-    val TAG = ActivityDialog::class.java.simpleName
+    val TAG = DialogFragment::class.java.simpleName
     val imagesArray = arrayOf(
         "https://maximum.fm/uploads/media_news/2020/05/5ec25857a251b581364253.png?w=1200&h=675&il&q=80&output=jpg",
         "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ea7a3c32163929.567197ac70bda.png",
